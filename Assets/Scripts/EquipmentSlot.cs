@@ -10,6 +10,11 @@ public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Sprite defaultIcon;
     public TextMeshProUGUI tooltip;
 
+    void Start()
+    {
+        icon.sprite = defaultIcon;
+    }
+
     public void EquipItem(Item newItem)
     {
         item = newItem;
