@@ -8,15 +8,28 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     // Inventory Slots need to use InventoryItems and not Items
     // Right now it works ok, but cannot drop items or get quantity
-    InventoryItem storedItem;
+    public InventoryItem storedItem;
     public Image icon;
     public TextMeshProUGUI tooltip;
     public TextMeshProUGUI quantity;
     public Image dropButton;
+    public int index;
 
     public void AddItem(InventoryItem newItem)
     {
         storedItem = newItem;
+
+        quantity.text = storedItem.quantity.ToString();
+
+        icon.sprite = storedItem.item.icon;
+        icon.enabled = true;
+        dropButton.enabled = true;
+    }
+
+    public void AddItem(InventoryItem newItem, int q)
+    {
+        storedItem = newItem;
+        storedItem.quantity = q;
 
         quantity.text = storedItem.quantity.ToString();
 
@@ -65,5 +78,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
 
         storedItem.Remove(storedItem.quantity);
+    }
+
+    public void RemoveItem(int quantity)
+    {
+        if (storedItem.quantity >= quantity)
+        {
+            storedItem.Remove(quantity);
+        }
     }
 }

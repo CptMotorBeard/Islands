@@ -12,7 +12,8 @@ public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void Start()
     {
-        icon.sprite = defaultIcon;
+        if (item == null)
+            icon.sprite = defaultIcon;
     }
 
     public void EquipItem(Item newItem)
