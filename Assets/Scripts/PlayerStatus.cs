@@ -86,6 +86,9 @@ public class PlayerStatus : MonoBehaviour {
         float per = Energy / 100f;
 
         EnergyBar.rectTransform.localScale = new Vector3(per, 1f, 1f);
+
+        if (onStatChanged != null)
+            onStatChanged.Invoke();
     }
 
     public void LoseHealth(float amount)
@@ -95,6 +98,9 @@ public class PlayerStatus : MonoBehaviour {
         float per = Health / 100f;
 
         HealthBar.rectTransform.localScale = new Vector3(per, 1f, 1f);
+
+        if (onStatChanged != null)
+            onStatChanged.Invoke();
     }
 
     public void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
