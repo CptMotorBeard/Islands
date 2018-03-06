@@ -10,10 +10,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Right now it works ok, but cannot drop items or get quantity
     public InventoryItem storedItem;
     public Image icon;
-    public TextMeshProUGUI tooltip;
     public TextMeshProUGUI quantity;
     public Image dropButton;
     public int index;
+
+    TooltipBehavior tooltip;
+
+    void Start()
+    {
+        tooltip = TooltipBehavior.instance;
+    }
 
     public void AddItem(InventoryItem newItem)
     {
@@ -54,12 +60,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (storedItem == null)
             return;
 
-        tooltip.text = storedItem.item.name;
+        tooltip.SetTooltip(storedItem.item.name);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.text = "";
+        tooltip.ClearTooltip();
     }
 
     public void UseItem()

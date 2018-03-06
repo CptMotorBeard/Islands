@@ -8,10 +8,13 @@ public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     Item item;
     public Image icon;
     public Sprite defaultIcon;
-    public TextMeshProUGUI tooltip;
+
+    TooltipBehavior tooltip;
 
     void Start()
     {
+        tooltip = TooltipBehavior.instance;
+
         if (item == null)
             icon.sprite = defaultIcon;
     }
@@ -36,11 +39,11 @@ public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (item == null)
             return;
 
-        tooltip.text = item.name;
+        tooltip.SetTooltip(item.name);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.text = "";
+        tooltip.ClearTooltip();
     }
 }
