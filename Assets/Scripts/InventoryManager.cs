@@ -69,4 +69,13 @@ public class InventoryManager : MonoBehaviour
         currentItem = null;
         sprite.sprite = null;
     }
+
+    public void ReturnItem()
+    {
+        if (currentItem != null)
+        {
+            Inventory.instance.Add(currentItem.item, currentItem.quantity);
+            ClearItem();
+        }        
+    }
 }

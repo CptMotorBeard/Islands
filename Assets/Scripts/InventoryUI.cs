@@ -5,10 +5,10 @@ public class InventoryUI : MonoBehaviour {
 
     public Transform itemsParent;
     public GameObject inventoryUI;
-    public TextMeshProUGUI tooltip;
 
     Inventory inventory;
     InventorySlot[] slots;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +23,8 @@ public class InventoryUI : MonoBehaviour {
 		if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
-            tooltip.text = "";
+            TooltipBehavior.instance.ClearTooltip();
+            InventoryManager.instance.ReturnItem();
         }
 	}
 
