@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -21,12 +22,18 @@ public class InventoryManager : MonoBehaviour
     public InventoryItem currentItem;
     public GameObject imageTransform;
     public Image sprite;
+    TextMeshProUGUI heldQuantity;
+
+    void Start()
+    {
+        heldQuantity = imageTransform.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     void Update()
     {
         if (imageTransform.activeSelf)
         {
-             imageTransform.transform.position = Input.mousePosition + new Vector3(33, 33, 0);
+             imageTransform.transform.position = Input.mousePosition + new Vector3(2, 2, 0);
         }
     }
 
@@ -35,12 +42,14 @@ public class InventoryManager : MonoBehaviour
         imageTransform.SetActive(true);
         currentItem = newItem;
         sprite.sprite = newItem.item.icon;
+        heldQuantity.text = currentItem.quantity.ToString();
     }
 
     public void PickupItem (int quantity)
     {
         imageTransform.SetActive(true);
         currentItem.quantity += quantity;
+        heldQuantity.text = currentItem.quantity.ToString();
     }
 
     public void DropItem (int quantity)
@@ -48,7 +57,10 @@ public class InventoryManager : MonoBehaviour
         if (quantity >= currentItem.quantity)
             ClearItem();
         else
+        {
             currentItem.quantity -= quantity;
+            heldQuantity.text = currentItem.quantity.ToString();
+        }
     }
 
     public void ClearItem()
