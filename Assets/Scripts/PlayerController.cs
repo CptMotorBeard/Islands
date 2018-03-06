@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
-                playerStatus.isRunning = true;
+                playerStatus.Run();
             }
         }
 

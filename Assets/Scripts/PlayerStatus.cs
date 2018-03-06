@@ -36,6 +36,12 @@ public class PlayerStatus : MonoBehaviour {
     public bool isRunning = false;
     public float speed;
 
+    bool isExhausted = false;
+    bool isEnergyExhausted = false;
+
+    float runEnergyCost = 20;
+    float energyRegen = 8;
+
     // Variable Stats
     public float Health { get; private set; }
     public float Energy { get; private set; }
@@ -60,20 +66,34 @@ public class PlayerStatus : MonoBehaviour {
         // Decrease stamina if running
         if (isRunning)
         {
-            LoseEnergy(5 * Time.deltaTime);
+            LoseEnergy(runEnergyCost * Time.deltaTime);
         }
         else
         {
-            LoseEnergy(-1 * Time.deltaTime);
+            if (isExhausted)
+                LoseEnergy(-(energyRegen / 4) * Time.deltaTime);
+            else
+                LoseEnergy(-energyRegen * Time.deltaTime);
         }
 
 		// decrease hunger
         // inc/dec temperature based on equipment / location
 	}
 
+    public void Run()
+    {
+        if (!isExhausted)
+            isRunning = true;
+        else
+        {
+            if (!isEnergyExhausted)
+                isRunning = true;
+        }
+    }
+
     public float GetSpeed()
     {
-        if (Energy >= 5 && isRunning)
+        if (isRunning)
             return speed * 1.5f;
         else
             return speed;
@@ -86,6 +106,16 @@ public class PlayerStatus : MonoBehaviour {
         float per = Energy / 100f;
 
         EnergyBar.rectTransform.localScale = new Vector3(per, 1f, 1f);
+
+        if (Energy <= 0)
+            isEnergyExhausted = true;
+        if (Energy <= 20)
+            isExhausted = true;
+        if (Energy >= 100)
+        {
+            isExhausted = false;
+            isEnergyExhausted = false;
+        }            
 
         if (onStatChanged != null)
             onStatChanged.Invoke();
