@@ -109,8 +109,11 @@ public class PlayerStatus : MonoBehaviour {
 
         if (Energy <= 0)
             isEnergyExhausted = true;
-        if (Energy <= 20)
+        if (Energy <= 20 && !isExhausted)
+        {
+            MessageManagement.instance.SetMessage("You became exhausted");
             isExhausted = true;
+        }            
         if (Energy >= 100)
         {
             isExhausted = false;

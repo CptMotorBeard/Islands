@@ -77,6 +77,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (storedItem == null)
             return;
 
+        MessageManagement.instance.SetMessage("Dropped " + storedItem.item.name);
         storedItem.Remove(storedItem.quantity);
     }
 

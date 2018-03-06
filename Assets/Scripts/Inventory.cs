@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
-
+    
     int space = 28;
 
     public InventoryItem[] items = new InventoryItem[28];
@@ -51,7 +51,10 @@ public class Inventory : MonoBehaviour
             }
         }
         if (items[index] != null)
+        {
+            MessageManagement.instance.SetErrorMessage("Not enough space");
             return false;
+        }
 
         count++;
         items[index] = new InventoryItem(item, index, quantity);

@@ -9,8 +9,10 @@ public class Item : ScriptableObject {
 
     public int id;
 
+
     public virtual bool Use()
     {
+        MessageManagement.instance.SetMessage(name + " was used");
         Debug.Log(name + " was used");
         return false;
     }

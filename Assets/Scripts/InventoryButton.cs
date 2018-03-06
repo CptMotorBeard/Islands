@@ -51,7 +51,6 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler
             InventoryItem heldItem = inventoryManager.currentItem;
             if (heldItem != null)
             {
-                // WORKS
                 if (inventorySlot.storedItem == null)
                 {
                     inventoryManager.ClearItem();
