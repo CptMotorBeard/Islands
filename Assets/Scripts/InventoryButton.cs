@@ -59,21 +59,24 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler
                 }
                 else
                 {
-                    int total, overflow;
-                    total = heldItem.quantity + inventorySlot.storedItem.quantity;
-                    overflow = total - heldItem.item.maxQuantity;
-
-                    heldItem.inventorySlot = inventorySlot.index;
-
-                    inventory.Add(heldItem);
-
-                    inventoryManager.ClearItem();
-                    
-                    if (overflow > 0)
+                    if (heldItem.item.id == inventorySlot.storedItem.item.id)
                     {
-                        heldItem.quantity = overflow;
-                        inventoryManager.PickupItem(heldItem);
-                    }
+                        int total, overflow;
+                        total = heldItem.quantity + inventorySlot.storedItem.quantity;
+                        overflow = total - heldItem.item.maxQuantity;
+
+                        heldItem.inventorySlot = inventorySlot.index;
+
+                        inventory.Add(heldItem);
+
+                        inventoryManager.ClearItem();
+
+                        if (overflow > 0)
+                        {
+                            heldItem.quantity = overflow;
+                            inventoryManager.PickupItem(heldItem);
+                        }
+                    }                    
                 }
             }
             else
