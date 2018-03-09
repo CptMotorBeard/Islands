@@ -28,6 +28,7 @@ public class PlayerStatus : MonoBehaviour {
     public bool isRunning = false;
     public float speed;
 
+    bool isFatigued = false;
     bool isExhausted = false;
     bool isEnergyExhausted = false;
 
@@ -69,7 +70,7 @@ public class PlayerStatus : MonoBehaviour {
         }
         else
         {
-            if (isExhausted)
+            if (isFatigued)
                 LoseEnergy(-(energyRegen / 4) * Time.deltaTime);
             else
                 LoseEnergy(-energyRegen * Time.deltaTime);
@@ -112,12 +113,15 @@ public class PlayerStatus : MonoBehaviour {
         {
             MessageManagement.instance.SetMessage("You became exhausted");
             isExhausted = true;
-        }            
-        if (Energy >= 100)
+            isFatigued = true;
+        }
+        if (Energy >= 55)
         {
             isExhausted = false;
             isEnergyExhausted = false;
-        }            
+        }
+        if (Energy >= 100)
+            isFatigued = false;
 
         if (onStatChanged != null)
             onStatChanged.Invoke();
