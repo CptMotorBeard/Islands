@@ -7,8 +7,8 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler
     InventoryManager inventoryManager;
     Inventory inventory;
 
-    void Awake()
-    {
+    void Start()
+    {        
         inventoryManager = InventoryManager.instance;
         inventory = Inventory.instance;
     }

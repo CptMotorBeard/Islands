@@ -12,6 +12,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Image icon;
     public TextMeshProUGUI quantity;
     public Image dropButton;
+
+    [HideInInspector]
     public int index;
 
     TooltipBehavior tooltip;

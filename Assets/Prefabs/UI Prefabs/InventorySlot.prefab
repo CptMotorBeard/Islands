@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114232720077412902}
-  tooltip: {fileID: 0}
   quantity: {fileID: 114543001927986574}
   dropButton: {fileID: 114539076998054726}
   index: 0
@@ -444,7 +443,7 @@ RectTransform:
   m_GameObject: {fileID: 1369784632987662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 224471410634896058}
   - {fileID: 224332158193027046}
@@ -472,7 +471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.23999977, y: -17.050003}
+  m_AnchoredPosition: {x: -0.23999786, y: -17.050003}
   m_SizeDelta: {x: 45.47, y: 15.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224332158193027046
@@ -490,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4, y: 4}
+  m_AnchoredPosition: {x: -5, y: -5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &224471410634896058

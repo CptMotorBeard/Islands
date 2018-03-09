@@ -47,6 +47,8 @@ public class GameplayMenuUI : MonoBehaviour {
 
     public void ToggleMenu()
     {
+        TooltipBehavior.instance.ClearTooltip();
+        InventoryManager.instance.ReturnItem();
         gameplayMenu.SetActive(!gameplayMenu.activeSelf);
     }
 
