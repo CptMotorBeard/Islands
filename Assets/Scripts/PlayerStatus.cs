@@ -7,15 +7,7 @@ public class PlayerStatus : MonoBehaviour {
     public static PlayerStatus instance;
 
     void Awake()
-    {
-        Health = 100f;
-        Energy = 100f;
-        Hunger = 100f;
-        Temperature = 100f;
-
-        Mind = 10;
-        Body = 10;
-
+    {        
         if (instance)
         {
             Debug.LogWarning("More than one instance of Player Status");
@@ -59,6 +51,13 @@ public class PlayerStatus : MonoBehaviour {
 
     void Start()
     {
+        Health = 100f;
+        Energy = 100f;
+        Hunger = 100f;
+        Temperature = 100f;
+
+        Mind = 10;
+        Body = 10;
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 

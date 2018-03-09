@@ -13,23 +13,21 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
-        instance = this;        
-        rb2d = GetComponent<Rigidbody2D>();
+        instance = this;                
     }
     #endregion
 
     PlayerStatus playerStatus;
-
-    void Start()
-    {
-        playerStatus = PlayerStatus.instance;
-    }
-
     Rigidbody2D rb2d;
     Interactable focus;
 
     float currentSpeed;
 
+    void Start()
+    {
+        playerStatus = PlayerStatus.instance;
+        rb2d = GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate()
     {

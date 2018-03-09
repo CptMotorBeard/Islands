@@ -16,7 +16,7 @@ public class Harvestable : Interactable {
     Vector2 originalPosition;
     private int shakeCount = 0;
 
-    void Awake()
+    void Start()
     {
         originalPosition = transform.position;
         quantity = maxQuantity;
