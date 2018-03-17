@@ -15,3 +15,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e63640dd3a454094097e71d26180cc68, type: 3}
   maxQuantity: 999
   id: 100
+  craftingItem: 1
