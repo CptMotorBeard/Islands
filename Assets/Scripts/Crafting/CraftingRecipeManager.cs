@@ -19,24 +19,23 @@ public class CraftingRecipeManager : MonoBehaviour {
     }
     #endregion
 
-    List<CraftingRecipe> recipes = new List<CraftingRecipe>();
+    public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
     public void Add(CraftingRecipe recipe)
     {
         recipes.Add(recipe);
     }
 
-    public List<CraftingRecipe> RecipeExists(CraftingRecipe inRecipe)
+    public List<CraftingRecipe> RecipeExists(List<CraftingItem> inRecipe)
     {
         List<CraftingRecipe>  outRecipe = new List<CraftingRecipe>();
         foreach (CraftingRecipe r in recipes)
         {
-            bool validRecipe = (r.recipe.Length == inRecipe.recipe.Length);
-            int i = r.recipe.Length;
-
+            bool validRecipe = (r.recipe.Length == inRecipe.Count);
+            int i = r.recipe.Length;           
             while (validRecipe && i > 0)
             {
-                validRecipe = inRecipe.Contains(r.recipe[--i]);                
+                validRecipe = Contains(inRecipe, r.recipe[--i]);                                
             }
 
             if (validRecipe)
@@ -46,5 +45,15 @@ public class CraftingRecipeManager : MonoBehaviour {
         }
 
         return outRecipe;
+    }
+
+    bool Contains(List<CraftingItem> recipe, CraftingItem item)
+    {
+        foreach (CraftingItem c in recipe)
+        {           
+            if (item.item.id == c.item.id && c.quantity >= item.quantity)
+                return true;
+        }
+        return false;
     }
 }

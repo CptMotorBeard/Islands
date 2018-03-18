@@ -19,8 +19,12 @@ public class CraftingManager : MonoBehaviour {
     }
     #endregion
 
-    public List<CraftingItem> recipe = new List<CraftingItem>();
-    
+    public delegate void OnRecipeUpdate();
+    public OnRecipeUpdate onRecipeUpdateCallback;
+
+    List<CraftingItem> recipe = new List<CraftingItem>();
+    public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
+
     public void Add(CraftingItem item)
     {
         recipe.Add(item);
@@ -35,6 +39,9 @@ public class CraftingManager : MonoBehaviour {
 
     void UpdateList()
     {
+        recipes = CraftingRecipeManager.instance.RecipeExists(recipe);
 
+        if (onRecipeUpdateCallback != null)
+            onRecipeUpdateCallback.Invoke();
     }
 }

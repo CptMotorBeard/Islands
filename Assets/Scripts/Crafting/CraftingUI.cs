@@ -9,23 +9,34 @@ public class CraftingUI : MonoBehaviour
     public GameObject craftingObject;
 
     Button[] inventoryItems;
+    Button[] craftingItems;
 
     Inventory inventory;
+    CraftingManager craftingManager;
 
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
+        inventory.onItemChangedCallback += UpdateItemUI;
+
+        craftingManager = CraftingManager.instance;
+        craftingManager.onRecipeUpdateCallback += UpdateCraftingItemUI;
 
         inventoryItems = inventoryObject.GetComponentsInChildren<Button>();
+        craftingItems = craftingObject.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             inventoryItems[i].gameObject.SetActive(false);
         }
+
+        for (int i = 0; i < craftingItems.Length; i++)
+        {
+            craftingItems[i].gameObject.SetActive(false);
+        }
     }
 
-    void UpdateUI()
+    void UpdateItemUI()
     {
         List<int> heldItems = new List<int>();
         for (int i = 0; i < inventoryItems.Length; i++)
@@ -35,7 +46,7 @@ public class CraftingUI : MonoBehaviour
             {
                 int quantity = item.quantity;
                 inventoryItems[i].gameObject.SetActive(true);
-                for (int j = i+1; j < inventoryItems.Length; j++)
+                for (int j = i + 1; j < inventoryItems.Length; j++)
                 {
                     if (inventory.items[j] != null && inventory.items[j].item.id == item.item.id)
                     {
@@ -48,6 +59,15 @@ public class CraftingUI : MonoBehaviour
             }
             else
                 inventoryItems[i].gameObject.SetActive(false);
+        }
+    }
+
+    void UpdateCraftingItemUI()
+    {
+        for (int i = 0; i < craftingManager.recipes.Count; i++)
+        {
+            craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes[i].craftedItem.name;
+            craftingItems[i].gameObject.SetActive(true);
         }
     }
 }
