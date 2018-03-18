@@ -67,6 +67,7 @@ public class CraftingUI : MonoBehaviour
         for (int i = 0; i < craftingManager.recipes.Count; i++)
         {
             craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes[i].craftedItem.name;
+            craftingItems[i].GetComponent<CraftingRecipeButton>().recipe = craftingManager.recipes[i];
             craftingItems[i].gameObject.SetActive(true);
         }
     }
