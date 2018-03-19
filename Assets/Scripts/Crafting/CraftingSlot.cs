@@ -1,9 +1,10 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class CraftingSlot : MonoBehaviour {
-    [System.NonSerialized]  public CraftingItem item;
-    [System.NonSerialized]  public bool selected = false;
+public class CraftingSlot : MonoBehaviour
+{
+    [System.NonSerialized] public CraftingItem item;
+    [System.NonSerialized] public bool selected = false;
 
     public void Press()
     {
@@ -13,7 +14,7 @@ public class CraftingSlot : MonoBehaviour {
             CraftingManager.instance.Add(this);
         else
             CraftingManager.instance.Remove(this);
-        
-        this.gameObject.GetComponent<Image>().color = selected ? Color.black : Color.white;        
+
+        this.gameObject.GetComponent<Image>().color = selected ? Color.black : Color.white;
     }
 }

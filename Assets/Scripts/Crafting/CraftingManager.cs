@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingManager : MonoBehaviour {
+public class CraftingManager : MonoBehaviour
+{
 
     #region Singleton
     public static CraftingManager instance;

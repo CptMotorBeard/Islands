@@ -33,7 +33,7 @@ public class CraftingUI : MonoBehaviour
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             inventoryItems[i].gameObject.SetActive(false);
-        }        
+        }
     }
 
     void UpdateItemUI()
@@ -65,7 +65,7 @@ public class CraftingUI : MonoBehaviour
                 CraftingManager.instance.Remove(inventoryItems[i].GetComponent<CraftingSlot>());
                 inventoryItems[i].gameObject.SetActive(false);
             }
-                
+
         }
     }
 

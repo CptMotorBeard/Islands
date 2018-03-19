@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CraftingRecipeButton : MonoBehaviour {
+public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
     public CraftingRecipe recipe;
 
     public void Craft()
@@ -10,8 +12,25 @@ public class CraftingRecipeButton : MonoBehaviour {
         foreach (CraftingItem c in recipe.recipe)
         {
             Inventory.instance.RemoveItem(c.item, c.quantity);
-        }        
+        }
         Inventory.instance.Add(recipe.craftedItem, 1);
         CraftingManager.instance.UpdateCrafting();
+        TooltipBehavior.instance.ClearTooltip();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        string tooltip = "";
+        foreach (CraftingItem c in recipe.recipe)
+        {
+            tooltip += c.item.name + " :" + c.quantity;
+            tooltip += ", ";
+        }
+        TooltipBehavior.instance.SetTooltip(tooltip);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipBehavior.instance.ClearTooltip();
     }
 }
