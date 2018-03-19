@@ -75,9 +75,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (storedItem == null)
             return;
 
-        bool consumed = storedItem.item.Use();
-        if (consumed)
-            storedItem.Remove(1);
+        InventoryItem item = new InventoryItem(storedItem.item, storedItem.inventorySlot, storedItem.quantity);
+        storedItem.Remove(1);
+
+        bool consumed = item.item.Use();
+        if (!consumed)
+            storedItem = item;
+            
     }
 
     public void DropItem()
