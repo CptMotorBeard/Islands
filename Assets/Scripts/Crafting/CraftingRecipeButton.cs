@@ -12,5 +12,6 @@ public class CraftingRecipeButton : MonoBehaviour {
             Inventory.instance.RemoveItem(c.item, c.quantity);
         }        
         Inventory.instance.Add(recipe.craftedItem, 1);
+        CraftingManager.instance.UpdateCrafting();
     }
 }

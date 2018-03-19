@@ -22,18 +22,21 @@ public class CraftingManager : MonoBehaviour {
     public delegate void OnRecipeUpdate();
     public OnRecipeUpdate onRecipeUpdateCallback;
 
+    List<CraftingSlot> slots = new List<CraftingSlot>();
     List<CraftingItem> recipe = new List<CraftingItem>();
     public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
-    public void Add(CraftingItem item)
+    public void Add(CraftingSlot craftingItem)
     {
-        recipe.Add(item);
+        slots.Add(craftingItem);
+        recipe.Add(craftingItem.item);
         UpdateList();
     }
 
-    public void Remove(CraftingItem item)
+    public void Remove(CraftingSlot craftingItem)
     {
-        recipe.Remove(item);
+        slots.Remove(craftingItem);
+        recipe.Remove(craftingItem.item);
         UpdateList();
     }
 
@@ -43,5 +46,24 @@ public class CraftingManager : MonoBehaviour {
 
         if (onRecipeUpdateCallback != null)
             onRecipeUpdateCallback.Invoke();
+    }
+
+    public void UpdateCrafting()
+    {
+        recipe.Clear();
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].item.quantity > 0)
+            {
+                recipe.Add(slots[i].item);
+            }
+            else
+            {
+                slots.RemoveAt(i);
+            }
+        }
+
+        UpdateList();
     }
 }

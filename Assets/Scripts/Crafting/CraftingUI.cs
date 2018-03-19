@@ -25,15 +25,15 @@ public class CraftingUI : MonoBehaviour
         inventoryItems = inventoryObject.GetComponentsInChildren<Button>();
         craftingItems = craftingObject.GetComponentsInChildren<Button>();
 
-        for (int i = 0; i < inventoryItems.Length; i++)
-        {
-            inventoryItems[i].gameObject.SetActive(false);
-        }
-
         for (int i = 0; i < craftingItems.Length; i++)
         {
             craftingItems[i].gameObject.SetActive(false);
         }
+
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            inventoryItems[i].gameObject.SetActive(false);
+        }        
     }
 
     void UpdateItemUI()
@@ -58,17 +58,30 @@ public class CraftingUI : MonoBehaviour
                 inventoryItems[i].GetComponent<CraftingSlot>().item = new CraftingItem(item.item, quantity);
             }
             else
+            {
+                inventoryItems[i].GetComponent<CraftingSlot>().item = new CraftingItem(null, 0);
+                inventoryItems[i].GetComponent<Image>().color = Color.white;
+                inventoryItems[i].GetComponent<CraftingSlot>().selected = false;
                 inventoryItems[i].gameObject.SetActive(false);
+            }
+                
         }
     }
 
     void UpdateCraftingItemUI()
     {
-        for (int i = 0; i < craftingManager.recipes.Count; i++)
+        for (int i = 0; i < craftingItems.Length; i++)
         {
-            craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes[i].craftedItem.name;
-            craftingItems[i].GetComponent<CraftingRecipeButton>().recipe = craftingManager.recipes[i];
-            craftingItems[i].gameObject.SetActive(true);
+            if (i < craftingManager.recipes.Count)
+            {
+                craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes[i].craftedItem.name;
+                craftingItems[i].GetComponent<CraftingRecipeButton>().recipe = craftingManager.recipes[i];
+                craftingItems[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                craftingItems[i].gameObject.SetActive(false);
+            }
         }
     }
 }
