@@ -7,7 +7,10 @@ public class CraftingRecipeButton : MonoBehaviour {
 
     public void Craft()
     {
-        // Remove items from inventory
+        foreach (CraftingItem c in recipe.recipe)
+        {
+            Inventory.instance.RemoveItem(c.item, c.quantity);
+        }        
         Inventory.instance.Add(recipe.craftedItem, 1);
     }
 }
