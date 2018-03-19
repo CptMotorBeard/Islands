@@ -52,16 +52,9 @@ public class CraftingManager : MonoBehaviour {
     {
         recipe.Clear();
 
-        for (int i = 0; i < slots.Count; i++)
+        foreach (CraftingSlot c in slots)
         {
-            if (slots[i].item.quantity > 0)
-            {
-                recipe.Add(slots[i].item);
-            }
-            else
-            {
-                slots.RemoveAt(i);
-            }
+            recipe.Add(c.item);
         }
 
         UpdateList();

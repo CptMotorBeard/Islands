@@ -62,6 +62,7 @@ public class CraftingUI : MonoBehaviour
                 inventoryItems[i].GetComponent<CraftingSlot>().item = new CraftingItem(null, 0);
                 inventoryItems[i].GetComponent<Image>().color = Color.white;
                 inventoryItems[i].GetComponent<CraftingSlot>().selected = false;
+                CraftingManager.instance.Remove(inventoryItems[i].GetComponent<CraftingSlot>());
                 inventoryItems[i].gameObject.SetActive(false);
             }
                 
