@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentManager : MonoBehaviour {
+public class EquipmentManager : MonoBehaviour
+{
 
     #region Singleton
     public static EquipmentManager instance;
@@ -54,11 +55,13 @@ public class EquipmentManager : MonoBehaviour {
         if (currentEquipment[slotIndex] != null)
         {
             Equipment oldItem = currentEquipment[slotIndex];
-            inventory.Add(oldItem, 1);
 
-            currentEquipment[slotIndex] = null;
-            if (onEquipmentChanged != null)
-                onEquipmentChanged.Invoke(null, oldItem);
+            if (inventory.Add(oldItem, 1))
+            {
+                currentEquipment[slotIndex] = null;
+                if (onEquipmentChanged != null)
+                    onEquipmentChanged.Invoke(null, oldItem);
+            }
         }
     }
 
