@@ -9,13 +9,16 @@ public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void Craft()
     {
-        foreach (CraftingItem c in recipe.recipe)
+        if (Inventory.instance.Add(recipe.craftedItem, 1))
         {
-            Inventory.instance.RemoveItem(c.item, c.quantity);
-        }
-        Inventory.instance.Add(recipe.craftedItem, 1);
-        CraftingManager.instance.UpdateCrafting();
-        TooltipBehavior.instance.ClearTooltip();
+            foreach (CraftingItem c in recipe.recipe)
+            {
+                Inventory.instance.RemoveItem(c.item, c.quantity);
+            }
+
+            CraftingManager.instance.UpdateCrafting();
+            TooltipBehavior.instance.ClearTooltip();
+        }        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
