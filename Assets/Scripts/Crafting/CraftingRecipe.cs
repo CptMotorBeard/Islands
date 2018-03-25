@@ -7,6 +7,7 @@ public class CraftingRecipe : ScriptableObject
 {
 
     public Item craftedItem;
+    public int quantity = 1;
 
     public CraftingItem[] recipe;
 }

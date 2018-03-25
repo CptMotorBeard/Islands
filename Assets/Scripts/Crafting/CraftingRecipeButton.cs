@@ -9,7 +9,7 @@ public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void Craft()
     {
-        if (Inventory.instance.Add(recipe.craftedItem, 1))
+        if (Inventory.instance.Add(recipe.craftedItem, recipe.quantity))
         {
             foreach (CraftingItem c in recipe.recipe)
             {
