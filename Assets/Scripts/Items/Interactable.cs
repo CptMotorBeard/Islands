@@ -20,6 +20,7 @@ public class Interactable : MonoBehaviour {
         BaseUpdate();
     }
 
+    // Can't actually change update to virtual and this is my update. I may be making all interactables able to respawn in the future though so this may change
     public virtual void BaseUpdate()
     {
         if (isFocus && !hasInteracted)

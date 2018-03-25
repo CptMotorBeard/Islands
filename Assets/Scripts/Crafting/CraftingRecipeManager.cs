@@ -27,6 +27,7 @@ public class CraftingRecipeManager : MonoBehaviour
         recipes.Add(recipe);
     }
 
+    // Returns a list of valid recipes, given the quantities and items provided by inRecipe
     public List<CraftingRecipe> RecipeExists(List<CraftingItem> inRecipe)
     {
         List<CraftingRecipe> outRecipe = new List<CraftingRecipe>();

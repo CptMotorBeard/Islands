@@ -6,6 +6,8 @@ public class CraftingSlot : MonoBehaviour
     [System.NonSerialized] public CraftingItem item;
     [System.NonSerialized] public bool selected = false;
 
+    // TODO: Make public colours for selected and not selected, or better yet make something that looks half decent
+
     public void Press()
     {
         selected = !selected;

@@ -9,6 +9,11 @@ public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void Craft()
     {
+        // As of right now, even though the items are removed from the inventory,
+        // You cannot craft with a full inventory.
+        // I may change this so:
+
+        // TODO: Remove items from inventory before trying to craft
         if (Inventory.instance.Add(recipe.craftedItem, recipe.quantity))
         {
             foreach (CraftingItem c in recipe.recipe)

@@ -29,7 +29,7 @@ public class Harvestable : Interactable {
     
     public override void BaseUpdate()
     {
-        // May change this to all interactables (respawning)
+        // TODO: Maybe make all interactables respawn
         if (!active)
         {
             currentWait += Time.deltaTime;

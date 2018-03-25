@@ -30,6 +30,8 @@ public class CraftingManager : MonoBehaviour
     public void Add(CraftingSlot craftingItem)
     {
         slots.Add(craftingItem);
+        // Because of how the UI works, crafting slots can be added or removed without changing the recipe.
+        // We don't want to add an item to the crafting recipe again if it already exists.
         if (inRecipe(craftingItem.item.item.id))
             return;
         recipe.Add(craftingItem.item);

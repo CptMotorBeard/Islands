@@ -38,9 +38,11 @@ public class CraftingUI : MonoBehaviour
 
     void UpdateItemUI()
     {
+        // Clearing the crafting manager only clears the buttons used
         craftingManager.Clear();
 
         List<int> heldItems = new List<int>();
+        // We have an equal number of inventoryItems to item slots in the inventory
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             InventoryItem item = inventory.items[i];
@@ -63,6 +65,7 @@ public class CraftingUI : MonoBehaviour
                 inventoryItems[i].GetComponentInChildren<Text>().text = item.item.name + " : " + quantity;
                 slot.item = new CraftingItem(item.item, quantity);
 
+                // Check to see if the button is part of the currently selected recipe, if it is, select the button and add it back to the crafting button list
                 if (craftingManager.inRecipe(item.item.id))
                 {
                     craftingManager.Add(slot);

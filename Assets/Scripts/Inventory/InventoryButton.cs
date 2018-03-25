@@ -25,7 +25,6 @@ public class InventoryButton : MonoBehaviour, IPointerDownHandler
                 InventoryItem dropItem = new InventoryItem(heldItem.item, inventorySlot.index, 1);
                 inventory.Add(dropItem);
                 inventoryManager.DropItem(1);
-                return;
             }
             if (inventorySlot.storedItem != null)
             {

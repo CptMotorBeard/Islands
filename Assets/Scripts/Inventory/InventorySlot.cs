@@ -5,16 +5,12 @@ using TMPro;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-
-    // Inventory Slots need to use InventoryItems and not Items
-    // Right now it works ok, but cannot drop items or get quantity
     public InventoryItem storedItem;
     public Image icon;
     public TextMeshProUGUI quantity;
     public Image dropButton;
 
-    [HideInInspector]
-    public int index;
+    [HideInInspector] public int index;
 
     TooltipBehavior tooltip;
 
@@ -75,13 +71,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (storedItem == null)
             return;
 
+        // We store the item and remove it from the inventory before using it because using equipment can cause current equipment to return to inventory
+        // This caused a bug that would delete equipment when equipping from a full inventory, storing beforehand fixed it
         InventoryItem item = new InventoryItem(storedItem.item, storedItem.inventorySlot, storedItem.quantity);
         storedItem.Remove(1);
 
         bool consumed = item.item.Use();
         if (!consumed)
-            storedItem = item;
-            
+            storedItem = item;            
     }
 
     public void DropItem()
