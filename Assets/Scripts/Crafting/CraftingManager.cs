@@ -30,6 +30,8 @@ public class CraftingManager : MonoBehaviour
     public void Add(CraftingSlot craftingItem)
     {
         slots.Add(craftingItem);
+        if (inRecipe(craftingItem.item.item.id))
+            return;
         recipe.Add(craftingItem.item);
         UpdateList();
     }
@@ -37,8 +39,22 @@ public class CraftingManager : MonoBehaviour
     public void Remove(CraftingSlot craftingItem)
     {
         slots.Remove(craftingItem);
-        recipe.Remove(craftingItem.item);
-        UpdateList();
+        UpdateCrafting();
+    }
+
+    public void Clear()
+    {
+        slots.Clear();
+    }
+
+    public bool inRecipe(int id)
+    {
+        foreach (CraftingItem c in recipe)
+        {
+            if (c.item.id == id)
+                return true;
+        }
+        return false;
     }
 
     void UpdateList()
@@ -55,7 +71,8 @@ public class CraftingManager : MonoBehaviour
 
         foreach (CraftingSlot c in slots)
         {
-            recipe.Add(c.item);
+            if (!inRecipe(c.item.item.id))
+                recipe.Add(c.item);
         }
 
         UpdateList();

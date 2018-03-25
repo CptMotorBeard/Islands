@@ -38,10 +38,16 @@ public class CraftingUI : MonoBehaviour
 
     void UpdateItemUI()
     {
+        craftingManager.Clear();
+
         List<int> heldItems = new List<int>();
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             InventoryItem item = inventory.items[i];
+            CraftingSlot slot = inventoryItems[i].GetComponent<CraftingSlot>();
+            inventoryItems[i].GetComponent<Image>().color = Color.white;
+            slot.selected = false;
+
             if (item != null && item.item.craftingItem && !heldItems.Contains(item.item.id))
             {
                 int quantity = item.quantity;
@@ -55,14 +61,18 @@ public class CraftingUI : MonoBehaviour
                 }
                 heldItems.Add(item.item.id);
                 inventoryItems[i].GetComponentInChildren<Text>().text = item.item.name + " : " + quantity;
-                inventoryItems[i].GetComponent<CraftingSlot>().item = new CraftingItem(item.item, quantity);
+                slot.item = new CraftingItem(item.item, quantity);
+
+                if (craftingManager.inRecipe(item.item.id))
+                {
+                    craftingManager.Add(slot);
+                    inventoryItems[i].GetComponent<Image>().color = Color.black;
+                    slot.selected = true;
+                }
             }
             else
             {
-                inventoryItems[i].GetComponent<CraftingSlot>().item = new CraftingItem(null, 0);
-                inventoryItems[i].GetComponent<Image>().color = Color.white;
-                inventoryItems[i].GetComponent<CraftingSlot>().selected = false;
-                CraftingManager.instance.Remove(inventoryItems[i].GetComponent<CraftingSlot>());
+                slot.item = new CraftingItem(null, 0);
                 inventoryItems[i].gameObject.SetActive(false);
             }
 
