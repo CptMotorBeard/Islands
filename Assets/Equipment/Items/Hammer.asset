@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   name: Hammer
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 47a72a88314fc0546a06f967f569a7c4, type: 3}
   maxQuantity: 1
   id: 201
+  craftingItem: 0
   equipmentType: 5
   warmthMod: 0
-  damageMod: 50
+  damageMod: 10
   armorMod: 0

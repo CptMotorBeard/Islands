@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5245c898fbf78c1469fe417060def2de, type: 3}
+  m_Name: Axe Recipe
+  m_EditorClassIdentifier: 
+  craftedItem: {fileID: 11400000, guid: 0f79347f65d2de846a63b823d5eb758f, type: 2}
+  quantity: 1
+  recipe:
+  - item: {fileID: 11400000, guid: d7b575879eb8cf84d81bf6e093deb5ad, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 5fb4d9e96ee4fbe47ad07db265864823, type: 2}
+    quantity: 1

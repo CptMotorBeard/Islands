@@ -15,7 +15,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 50feca31e8b3e914faf349ba9e34d8df, type: 3}
   maxQuantity: 1
   id: 200
+  craftingItem: 0
   equipmentType: 4
-  warmthMod: 0
+  warmthMod: 10
   damageMod: 0
-  armorMod: 0
+  armorMod: 50

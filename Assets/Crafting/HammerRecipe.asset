@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: HammerRecipe
   m_EditorClassIdentifier: 
   craftedItem: {fileID: 11400000, guid: 79a6cd0fc04708244b2e5db6191eec16, type: 2}
+  quantity: 1
   recipe:
-  - item: {fileID: 11400000, guid: 3e4392300547fa24d8cfe19c12f0cd18, type: 2}
+  - item: {fileID: 11400000, guid: d7b575879eb8cf84d81bf6e093deb5ad, type: 2}
     quantity: 1
   - item: {fileID: 11400000, guid: 5fb4d9e96ee4fbe47ad07db265864823, type: 2}
     quantity: 1
