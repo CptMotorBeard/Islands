@@ -18,6 +18,9 @@ public class GameplayMenuUI : MonoBehaviour {
 
     void Update()
     {
+        if (DebugManager.instance.debug)
+            return;
+
         if (Input.GetButtonDown("Inventory"))
         {
             if (!gameplayMenu.activeSelf || inventoryMenu.activeSelf)

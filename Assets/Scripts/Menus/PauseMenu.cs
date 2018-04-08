@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (!DebugManager.instance.debug && Input.GetButtonDown("Pause"))
         {
             if (gamePaused)
                 Resume();

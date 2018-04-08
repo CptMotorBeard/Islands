@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (DebugManager.instance.debug)
+            return;
+
         currentSpeed = playerStatus.GetSpeed();
         playerStatus.isRunning = false;
 
