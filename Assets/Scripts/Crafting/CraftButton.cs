@@ -61,4 +61,12 @@ public class CraftButton : MonoBehaviour
         craftButton = button.gameObject.GetComponent<Button>();
         craftButton.gameObject.GetComponent<Image>().color = Color.black;
     }
+
+    public void Clear()
+    {
+        recipe = null;
+        if (craftButton)
+            craftButton.gameObject.GetComponent<Image>().color = Color.white;
+        craftButton = null;
+    }
 }
