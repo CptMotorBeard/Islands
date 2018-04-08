@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+{
 
     public InventoryItem storedItem;
     public Image icon;
@@ -71,14 +72,26 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (storedItem == null)
             return;
 
-        // We store the item and remove it from the inventory before using it because using equipment can cause current equipment to return to inventory
-        // This caused a bug that would delete equipment when equipping from a full inventory, storing beforehand fixed it
-        InventoryItem item = new InventoryItem(storedItem.item, storedItem.inventorySlot, storedItem.quantity);
-        storedItem.Remove(1);
+        if (storedItem.item.GetType() == typeof(Equipment))
+        {
 
-        bool consumed = item.item.Use();
-        if (!consumed)
-            storedItem = item;            
+            // We store the item and remove it from the inventory before using it because using equipment can cause current equipment to return to inventory
+            // This caused a bug that would delete equipment when equipping from a full inventory, storing beforehand fixed it
+            InventoryItem item = new InventoryItem(storedItem.item, storedItem.inventorySlot, storedItem.quantity);
+            storedItem.Remove(1);
+
+            bool consumed = item.item.Use();
+            if (!consumed)
+                storedItem = item;
+        }
+        else
+        {
+            if (storedItem.item.Use())
+            {
+                storedItem.Remove(1);
+            }
+        }
+
     }
 
     public void DropItem()
