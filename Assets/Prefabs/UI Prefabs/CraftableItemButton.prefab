@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  craft: {fileID: 114682145093900464, guid: c44836ce830e0fe48affd1ff2d14d552, type: 2}
 --- !u!114 &114493110211784448
 MonoBehaviour:
   m_ObjectHideFlags: 1

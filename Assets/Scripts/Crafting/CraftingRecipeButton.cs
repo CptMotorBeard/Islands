@@ -1,29 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public CraftingRecipe recipe;
+    public CraftButton craft;
 
     public void Craft()
     {
-        // As of right now, even though the items are removed from the inventory,
-        // You cannot craft with a full inventory.
-        // I may change this so:
-
-        // TODO: Remove items from inventory before trying to craft
-        if (Inventory.instance.Add(recipe.craftedItem, recipe.quantity))
-        {
-            foreach (CraftingItem c in recipe.recipe)
-            {
-                Inventory.instance.RemoveItem(c.item, c.quantity);
-            }
-
-            CraftingManager.instance.UpdateCrafting();
-            TooltipBehavior.instance.ClearTooltip();
-        }        
+        craft.SetButton(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
