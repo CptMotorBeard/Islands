@@ -28,32 +28,38 @@ public class CraftingRecipeManager : MonoBehaviour
     }
 
     // Returns a list of valid recipes, given the quantities and items provided by inRecipe
-    public List<CraftingRecipe> RecipeExists(List<CraftingItem> inRecipe)
+    public Dictionary<CraftingRecipe, int> RecipeExists(List<CraftingItem> inRecipe)
     {
-        List<CraftingRecipe> outRecipe = new List<CraftingRecipe>();
+        Dictionary<CraftingRecipe, int> outRecipe = new Dictionary<CraftingRecipe, int>();
         foreach (CraftingRecipe r in recipes)
         {
             bool validRecipe = (r.recipe.Length == inRecipe.Count);
             int i = r.recipe.Length;
+            int maxQuantity = 0;
             while (validRecipe && i > 0)
             {
-                validRecipe = Contains(inRecipe, r.recipe[--i]);
+                int q = 0;
+                validRecipe = Contains(inRecipe, r.recipe[--i], out q);
+
+                maxQuantity = Mathf.Max(q, maxQuantity);
             }
 
             if (validRecipe)
             {
-                outRecipe.Add(r);
+                outRecipe.Add(r, maxQuantity);
             }
         }
 
         return outRecipe;
     }
 
-    bool Contains(List<CraftingItem> recipe, CraftingItem item)
+    bool Contains(List<CraftingItem> recipe, CraftingItem item, out int maxQuantity)
     {
+        maxQuantity = 0;
         foreach (CraftingItem c in recipe)
         {
             if (item.item.id == c.item.id && c.quantity >= item.quantity)
+                maxQuantity = c.quantity / item.quantity;
                 return true;
         }
         return false;

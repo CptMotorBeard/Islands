@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Linq;
 
 public class CraftingUI : MonoBehaviour
 {
@@ -88,8 +89,9 @@ public class CraftingUI : MonoBehaviour
         {
             if (i < craftingManager.recipes.Count)
             {
-                craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes[i].craftedItem.name;
-                craftingItems[i].GetComponent<CraftingRecipeButton>().recipe = craftingManager.recipes[i];
+                craftingItems[i].GetComponentInChildren<Text>().text = craftingManager.recipes.ElementAt(i).Key.craftedItem.name;
+                craftingItems[i].GetComponent<CraftingRecipeButton>().recipe = craftingManager.recipes.ElementAt(i).Key;
+                craftingItems[i].GetComponent<CraftingRecipeButton>().maxQuantity = craftingManager.recipes.ElementAt(i).Value;
                 craftingItems[i].gameObject.SetActive(true);
             }
             else

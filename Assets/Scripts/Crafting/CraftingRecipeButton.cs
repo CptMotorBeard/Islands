@@ -6,6 +6,7 @@ public class CraftingRecipeButton : MonoBehaviour, IPointerEnterHandler, IPointe
 {
     public CraftingRecipe recipe;
     public CraftButton craft;
+    public int maxQuantity;
 
     public void Craft()
     {

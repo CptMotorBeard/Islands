@@ -25,7 +25,7 @@ public class CraftButton : MonoBehaviour
         // You cannot craft with a full inventory.
         // I may change this so:
         // TODO: Remove items from inventory before trying to craft
-        if (Inventory.instance.Add(recipe.craftedItem, recipe.quantity))
+        if (Inventory.instance.Add(recipe.craftedItem, quantity * recipe.quantity))
         {
             foreach (CraftingItem c in recipe.recipe)
             {
@@ -57,6 +57,7 @@ public class CraftButton : MonoBehaviour
             }
         }
         recipe = button.recipe;
+        max = button.maxQuantity;
         craftButton = button.gameObject.GetComponent<Button>();
         craftButton.gameObject.GetComponent<Image>().color = Color.black;
     }

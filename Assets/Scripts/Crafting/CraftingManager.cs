@@ -25,7 +25,7 @@ public class CraftingManager : MonoBehaviour
 
     List<CraftingSlot> slots = new List<CraftingSlot>();
     List<CraftingItem> recipe = new List<CraftingItem>();
-    public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
+    public Dictionary<CraftingRecipe, int> recipes = new Dictionary<CraftingRecipe, int>();
 
     public void Add(CraftingSlot craftingItem)
     {
