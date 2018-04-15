@@ -57,13 +57,18 @@ public class CraftButton : MonoBehaviour
             }
         }
         recipe = button.recipe;
-        max = button.maxQuantity;
+        max = Mathf.Min(button.maxQuantity, recipe.craftedItem.maxQuantity);
+        if (quantity > max)
+            quantity = max;
+        qtext.text = quantity.ToString();
         craftButton = button.gameObject.GetComponent<Button>();
         craftButton.gameObject.GetComponent<Image>().color = Color.black;
     }
 
     public void Clear()
     {
+        quantity = 1;
+        qtext.text = quantity.ToString();
         recipe = null;
         if (craftButton)
             craftButton.gameObject.GetComponent<Image>().color = Color.white;

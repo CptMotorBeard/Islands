@@ -29,7 +29,6 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item, int quantity)
     {
-
         int index = space - 1;
         for (int i = space - 1; i >= 0; i--)
         {
