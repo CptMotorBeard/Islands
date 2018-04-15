@@ -20,6 +20,7 @@ public class CraftingRecipeManager : MonoBehaviour
     }
     #endregion
 
+    // TODO: Change this list so it's like our items
     public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
     public void Add(CraftingRecipe recipe)
@@ -33,6 +34,7 @@ public class CraftingRecipeManager : MonoBehaviour
         Dictionary<CraftingRecipe, int> outRecipe = new Dictionary<CraftingRecipe, int>();
         foreach (CraftingRecipe r in recipes)
         {
+            
             bool validRecipe = (r.recipe.Length == inRecipe.Count);
             int i = r.recipe.Length;
             int maxQuantity = 0;
@@ -40,7 +42,6 @@ public class CraftingRecipeManager : MonoBehaviour
             {
                 int q = 0;
                 validRecipe = Contains(inRecipe, r.recipe[--i], out q);
-
                 maxQuantity = Mathf.Max(q, maxQuantity);
             }
 
@@ -59,8 +60,10 @@ public class CraftingRecipeManager : MonoBehaviour
         foreach (CraftingItem c in recipe)
         {
             if (item.item.id == c.item.id && c.quantity >= item.quantity)
+            {
                 maxQuantity = c.quantity / item.quantity;
                 return true;
+            }                
         }
         return false;
     }
