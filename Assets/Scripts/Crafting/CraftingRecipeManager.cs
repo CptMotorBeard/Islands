@@ -37,12 +37,12 @@ public class CraftingRecipeManager : MonoBehaviour
             
             bool validRecipe = (r.recipe.Length == inRecipe.Count);
             int i = r.recipe.Length;
-            int maxQuantity = 0;
+            int maxQuantity = 999;
             while (validRecipe && i > 0)
             {
-                int q = 0;
+                int q = 999;
                 validRecipe = Contains(inRecipe, r.recipe[--i], out q);
-                maxQuantity = Mathf.Max(q, maxQuantity);
+                maxQuantity = Mathf.Min(q, maxQuantity);
             }
 
             if (validRecipe)
