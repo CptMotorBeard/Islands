@@ -7,6 +7,9 @@ public class CraftingSlot : MonoBehaviour
     [System.NonSerialized] public bool selected = false;
     public CraftButton craft;
 
+    public Sprite buttonSelect;
+    public Sprite buttonRegular;
+
     // TODO: Make public colours for selected and not selected, or better yet make something that looks half decent
 
     public void Press()
@@ -18,7 +21,21 @@ public class CraftingSlot : MonoBehaviour
         else
             CraftingManager.instance.Remove(this);
 
-        this.gameObject.GetComponent<Image>().color = selected ? Color.black : Color.white;
+        if (selected)
+            Select();
+        else
+            Clear();            
+
         craft.Clear();
+    }
+
+    public void Select()
+    {
+        this.gameObject.GetComponent<Image>().sprite = buttonSelect;
+    }
+
+    public void Clear()
+    {
+        this.gameObject.GetComponent<Image>().sprite = buttonRegular;
     }
 }

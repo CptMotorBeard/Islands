@@ -110,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908cadf0ab2940d469822739e2d51ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    item: {fileID: 0}
-    quantity: 0
+  craft: {fileID: 0}
+  buttonSelect: {fileID: 21300000, guid: 380a22bd81f8e5c4a9cd29c8cd96023d, type: 3}
+  buttonRegular: {fileID: 21300000, guid: aebe278d10886cf44a406abc455a10ac, type: 3}
 --- !u!114 &114633768234611178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,8 +165,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aebe278d10886cf44a406abc455a10ac, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

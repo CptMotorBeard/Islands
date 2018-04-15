@@ -11,6 +11,8 @@ public class CraftButton : MonoBehaviour
     int quantity = 1;
 
     public TextMeshProUGUI qtext;
+    public Sprite buttonSelect;
+    public Sprite buttonNormal;
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class CraftButton : MonoBehaviour
         if (recipe != null)
         {
             recipe = null;
-            craftButton.gameObject.GetComponent<Image>().color = Color.white;
+            craftButton.gameObject.GetComponent<Image>().sprite = buttonNormal;
             if (craftButton == button.gameObject.GetComponent<Button>())
             {
                 craftButton = null;
@@ -62,7 +64,7 @@ public class CraftButton : MonoBehaviour
             quantity = max;
         qtext.text = quantity.ToString();
         craftButton = button.gameObject.GetComponent<Button>();
-        craftButton.gameObject.GetComponent<Image>().color = Color.black;
+        craftButton.gameObject.GetComponent<Image>().sprite = buttonSelect;
     }
 
     public void Clear()
@@ -71,7 +73,7 @@ public class CraftButton : MonoBehaviour
         qtext.text = quantity.ToString();
         recipe = null;
         if (craftButton)
-            craftButton.gameObject.GetComponent<Image>().color = Color.white;
+            craftButton.gameObject.GetComponent<Image>().sprite = buttonNormal;
         craftButton = null;
     }
 }

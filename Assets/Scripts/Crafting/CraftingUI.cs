@@ -48,7 +48,7 @@ public class CraftingUI : MonoBehaviour
         {
             InventoryItem item = inventory.items[i];
             CraftingSlot slot = inventoryItems[i].GetComponent<CraftingSlot>();
-            inventoryItems[i].GetComponent<Image>().color = Color.white;
+            slot.Clear();
             slot.selected = false;
 
             if (item != null && item.item.craftingItem && !heldItems.Contains(item.item.id))
@@ -70,7 +70,7 @@ public class CraftingUI : MonoBehaviour
                 if (craftingManager.inRecipe(item.item.id))
                 {
                     craftingManager.Add(slot);
-                    inventoryItems[i].GetComponent<Image>().color = Color.black;
+                    slot.Select();
                     slot.selected = true;
                 }
             }
