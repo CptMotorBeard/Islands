@@ -22,10 +22,10 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
-    int space = 28;
+    public const int space = 28;
+    public const int totalSpace = space + 10;   // for toolbar
 
-    public InventoryItem[] items = new InventoryItem[28];
-    int count = 0;
+    public InventoryItem[] items = new InventoryItem[totalSpace];
 
     public bool Add(Item item, int quantity)
     {
@@ -53,7 +53,6 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        count++;
         items[index] = new InventoryItem(item, index, quantity);
 
         if (onItemChangedCallback != null)
@@ -67,7 +66,6 @@ public class Inventory : MonoBehaviour
 
         if (items[index] == null)
         {
-            count++;
             items[index] = item;
         }
         else if (items[index].item.id == item.item.id)
@@ -87,7 +85,6 @@ public class Inventory : MonoBehaviour
 
     public void Remove(int index)
     {
-        count--;
         items[index] = null;
 
         if (onItemChangedCallback != null)
@@ -99,7 +96,6 @@ public class Inventory : MonoBehaviour
         items[index].quantity -= q;
         if (items[index].quantity <= 0)
         {
-            count--;
             items[index] = null;
         }
 
