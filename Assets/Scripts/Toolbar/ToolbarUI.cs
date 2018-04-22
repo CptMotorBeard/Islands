@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class ToolbarUI : MonoBehaviour {
+public class ToolbarUI : MonoBehaviour
+{
 
     public Transform toolbarParent;
 
@@ -14,11 +15,14 @@ public class ToolbarUI : MonoBehaviour {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
+        ToolbarManager.instance.onSelectionChangeCallback += UpdateSelection;
+
         slots = toolbarParent.GetComponentsInChildren<InventorySlot>();
 
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].index = startPoint + i;
+            slots[i].ClearSlot();
         }
     }
 
@@ -30,6 +34,15 @@ public class ToolbarUI : MonoBehaviour {
                 slots[i].AddItem(inventory.items[startPoint + i]);
             else
                 slots[i].ClearSlot();
+        }
+    }
+
+    void UpdateSelection(int newIndex)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            GameObject border = slots[i].transform.Find("SelectBorder").gameObject;
+            border.SetActive(i == newIndex);
         }
     }
 }

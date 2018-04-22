@@ -23,12 +23,11 @@ public class ToolbarManager : MonoBehaviour
     int selected = 0;
 
     public Transform toolbarParent;
-
-    InventorySlot[] toolbar;
+    public delegate void OnSelectionChange(int newIndex);
+    public OnSelectionChange onSelectionChangeCallback;
 
     void Start()
     {
-        toolbar = toolbarParent.GetComponentsInChildren<InventorySlot>();
         UpdateSelected();
     }
 
@@ -76,9 +75,7 @@ public class ToolbarManager : MonoBehaviour
 
     void UpdateSelected()
     {
-        for (int i = 0; i < size; i++)
-        {
-            // Select and deselect images
-        }
+        if (onSelectionChangeCallback != null)
+            onSelectionChangeCallback.Invoke(selected);
     }
 }
