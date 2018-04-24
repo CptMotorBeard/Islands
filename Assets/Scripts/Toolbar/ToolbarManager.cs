@@ -26,11 +26,6 @@ public class ToolbarManager : MonoBehaviour
     public delegate void OnSelectionChange(int newIndex);
     public OnSelectionChange onSelectionChangeCallback;
 
-    void Start()
-    {
-        UpdateSelected();
-    }
-
     void Update()
     {
         if (DebugManager.instance.debug)

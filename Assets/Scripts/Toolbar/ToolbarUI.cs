@@ -24,6 +24,8 @@ public class ToolbarUI : MonoBehaviour
             slots[i].index = startPoint + i;
             slots[i].ClearSlot();
         }
+
+        UpdateSelection(0);
     }
 
     void UpdateUI()
