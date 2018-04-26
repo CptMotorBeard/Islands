@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName ="Inventory/Equipment")]
 public class Equipment : Item {
@@ -21,4 +19,4 @@ public class Equipment : Item {
 
 }
 
-public enum EquipmentType { RING, HELMET, NECKLACE, GLOVE, CHEST, WEAPON, OFFHAND, BOOT }
+public enum EquipmentType { RING, HELMET, NECKLACE, GLOVE, CHEST, BOOT }

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5245c898fbf78c1469fe417060def2de, type: 3}
   m_Name: HammerRecipe
   m_EditorClassIdentifier: 
-  craftedItem: {fileID: 11400000, guid: 79a6cd0fc04708244b2e5db6191eec16, type: 2}
+  craftedItem: {fileID: 11400000, guid: a2bacbf4954753b4c8bce7c7d0956fb6, type: 2}
   quantity: 1
   recipe:
   - item: {fileID: 11400000, guid: d7b575879eb8cf84d81bf6e093deb5ad, type: 2}

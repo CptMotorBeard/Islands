@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5245c898fbf78c1469fe417060def2de, type: 3}
   m_Name: Axe Recipe
   m_EditorClassIdentifier: 
-  craftedItem: {fileID: 11400000, guid: 0f79347f65d2de846a63b823d5eb758f, type: 2}
+  craftedItem: {fileID: 11400000, guid: 6fae4673cc3782945977d56d58f44d86, type: 2}
   quantity: 1
   recipe:
   - item: {fileID: 11400000, guid: d7b575879eb8cf84d81bf6e093deb5ad, type: 2}
