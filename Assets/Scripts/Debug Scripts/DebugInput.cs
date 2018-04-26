@@ -45,6 +45,17 @@ public class DebugInput : MonoBehaviour {
                     MessageManagement.instance.SetErrorMessage("Invalid Command");
                 }
                 return;
+            case "time":
+                try
+                {
+                    float time = float.Parse(args[1]);
+                    DayNightLighting.instance.timeOfDay = time;
+                }
+                catch
+                {
+                    MessageManagement.instance.SetErrorMessage("Invalid Command");
+                }
+                return;
             default:
                 MessageManagement.instance.SetErrorMessage("Invalid Command");
                 return;
