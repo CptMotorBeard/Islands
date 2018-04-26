@@ -7,6 +7,7 @@ public class CraftingRecipeManager : MonoBehaviour
 
     #region Singleton
     public static CraftingRecipeManager instance;
+    List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
     void Awake()
     {
@@ -17,11 +18,14 @@ public class CraftingRecipeManager : MonoBehaviour
         }
 
         instance = this;
+
+        CraftingRecipe[] allRecipes = Resources.FindObjectsOfTypeAll<CraftingRecipe>();
+        foreach (CraftingRecipe r in allRecipes)
+        {
+            recipes.Add(r);
+        }
     }
     #endregion
-
-    // TODO: Change this list so it's like our items
-    public List<CraftingRecipe> recipes = new List<CraftingRecipe>();
 
     public void Add(CraftingRecipe recipe)
     {
