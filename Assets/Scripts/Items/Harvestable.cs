@@ -65,12 +65,10 @@ public class Harvestable : Interactable {
     public override void Interact()
     {
         InventoryItem selectedItem = ToolbarManager.instance.GetSelectedItem();
-        Tool selectedTool;
+        Tool selectedTool = null;
 
-        if (selectedItem != null)
+        if (selectedItem != null && selectedItem.item.GetType() == typeof(Tool))
             selectedTool = (Tool)selectedItem.item;
-        else
-            selectedTool = null;
 
         if (toolType == ToolType.NONE || (selectedTool != null && (selectedTool.toolType == toolType && selectedTool.grade >= requiredGrade)))
         {
