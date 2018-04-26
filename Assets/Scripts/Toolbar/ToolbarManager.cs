@@ -73,4 +73,9 @@ public class ToolbarManager : MonoBehaviour
         if (onSelectionChangeCallback != null)
             onSelectionChangeCallback.Invoke(selected);
     }
+
+    public InventoryItem GetSelectedItem()
+    {
+        return Inventory.instance.items[selected + Inventory.space];
+    }
 }

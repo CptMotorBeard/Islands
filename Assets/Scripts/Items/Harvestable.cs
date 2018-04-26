@@ -5,6 +5,10 @@ using UnityEngine;
 public class Harvestable : Interactable {
 
     public float respawnTime;
+
+    public ToolType toolType;
+    public int requiredGrade;
+
     bool active = true;
     float currentWait;
 
@@ -60,9 +64,24 @@ public class Harvestable : Interactable {
 
     public override void Interact()
     {
-        base.Interact();
+        InventoryItem selectedItem = ToolbarManager.instance.GetSelectedItem();
+        Tool selectedTool;
 
-        Harvest();
+        if (selectedItem != null)
+            selectedTool = (Tool)selectedItem.item;
+        else
+            selectedTool = null;
+
+        if (toolType == ToolType.NONE || (selectedTool != null && (selectedTool.toolType == toolType && selectedTool.grade >= requiredGrade)))
+        {
+            base.Interact();
+
+            Harvest();
+        }
+        else
+        {
+            MessageManagement.instance.SetErrorMessage("You don't have the right tool for the job");
+        }
     }
 
     public void Harvest()
