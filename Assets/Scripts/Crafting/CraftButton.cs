@@ -36,6 +36,10 @@ public class CraftButton : MonoBehaviour
 
             CraftingManager.instance.UpdateCrafting();
             TooltipBehavior.instance.ClearTooltip();
+            max = Mathf.Min(craftButton.gameObject.GetComponent<CraftingRecipeButton>().maxQuantity, recipe.craftedItem.maxQuantity);
+            if (quantity > max)
+                quantity = max;
+            qtext.text = quantity.ToString();
         }
     }
 
