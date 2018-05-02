@@ -1,31 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveableUIObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class MoveableUIObject : MonoBehaviour, IDragHandler, IBeginDragHandler
 {
-    bool mouseDown;
     Transform parent;
+    Vector3 offset;
 
     void Start()
     {
         parent = this.transform.parent;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)
     {
-        mouseDown = true;
+        parent.position = Input.mousePosition + offset;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        mouseDown = false;
+        Vector3 clickedPos = Input.mousePosition;
+        offset = parent.position - clickedPos;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (mouseDown)
-        {
-            parent.position = Input.mousePosition;
-        }
-	}
 }
