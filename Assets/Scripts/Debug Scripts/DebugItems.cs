@@ -17,8 +17,8 @@ public class DebugItems : MonoBehaviour {
         }
         instance = this;
 
-        Item[] items = Resources.FindObjectsOfTypeAll<Item>();
-
+        Item[] items = Resources.LoadAll<Item>("Inventory");
+        
         foreach (Item i in items)
         {
             m_ItemList.Add(i.id, i);
