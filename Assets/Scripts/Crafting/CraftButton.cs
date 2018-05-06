@@ -38,6 +38,8 @@ public class CraftButton : MonoBehaviour
                 Inventory.instance.RemoveItem(c.item, quantity * c.quantity);
             }
 
+            MessageManagement.instance.SetMessage(recipe.craftedItem.name + " was crafted");
+
             CraftingManager.instance.UpdateCrafting();
             TooltipBehavior.instance.ClearTooltip();
             max = Mathf.Min(craftButton.gameObject.GetComponent<CraftingRecipeButton>().maxQuantity, recipe.craftedItem.maxQuantity);
