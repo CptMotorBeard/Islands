@@ -32,13 +32,15 @@ public class CraftButton : MonoBehaviour
         // I may change this so:
         // TODO: Remove items from inventory before trying to craft
         if (Inventory.instance.Add(recipe.craftedItem, quantity * recipe.quantity))
-        {
+        {            
             foreach (CraftingItem c in recipe.recipe)
             {
                 Inventory.instance.RemoveItem(c.item, quantity * c.quantity);
             }
 
             MessageManagement.instance.SetMessage(recipe.craftedItem.name + " was crafted");
+
+            bool maxCrafted = quantity == max;
 
             CraftingManager.instance.UpdateCrafting();
             TooltipBehavior.instance.ClearTooltip();
@@ -47,7 +49,7 @@ public class CraftButton : MonoBehaviour
                 quantity = max;
             qtext.text = quantity.ToString();
 
-            if (quantity == max)
+            if (maxCrafted)
                 Clear();
         }
     }
