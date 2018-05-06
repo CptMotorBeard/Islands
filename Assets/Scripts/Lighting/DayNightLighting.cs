@@ -20,6 +20,7 @@ public class DayNightLighting : MonoBehaviour {
     #endregion
 
     public Transform lightSource;
+    public Transform clock;
 
     public float timeOfDay;
     public float timeMultiplier = 1;
@@ -33,7 +34,9 @@ public class DayNightLighting : MonoBehaviour {
         float angle = (timeOfDay / 6.66f) - 180f;
 
         Quaternion target = Quaternion.Euler(angle, 0f, 0f);
-
         lightSource.rotation = target;
+
+        target = Quaternion.Euler(0f, 0f, -angle);
+        clock.rotation = target;
 	}
 }
