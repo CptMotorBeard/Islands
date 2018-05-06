@@ -15,6 +15,8 @@ public class DebugInput : MonoBehaviour {
             DebugManager.instance.debug = !DebugManager.instance.debug;
             if (input.activeSelf)
                 inputField.ActivateInputField();
+
+            inputField.text = "";
         }
             
     }
@@ -50,6 +52,17 @@ public class DebugInput : MonoBehaviour {
                 {
                     float time = float.Parse(args[1]);
                     DayNightLighting.instance.timeOfDay = time;
+                }
+                catch
+                {
+                    MessageManagement.instance.SetErrorMessage("Invalid Command");
+                }
+                return;
+            case "timescale":
+                try
+                {
+                    float scale = float.Parse(args[1]);
+                    DayNightLighting.instance.timeMultiplier = scale;
                 }
                 catch
                 {
