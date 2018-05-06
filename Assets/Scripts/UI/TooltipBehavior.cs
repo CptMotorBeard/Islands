@@ -33,7 +33,7 @@ public class TooltipBehavior : MonoBehaviour
     void Update()
     {
         if (tooltip.activeSelf)
-            tooltip.transform.position = Input.mousePosition + new Vector3(5, 10, 0);
+            tooltip.transform.position = Input.mousePosition + new Vector3(7, 10, 0);
     }
 
     public void SetTooltip(string message)
