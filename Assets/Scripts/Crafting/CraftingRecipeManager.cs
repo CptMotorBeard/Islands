@@ -15,15 +15,15 @@ public class CraftingRecipeManager : MonoBehaviour
         {
             Debug.LogWarning("More than one instance of Crafting Recipe Manager");
             return;
-        }
+        }        
 
-        instance = this;
-
-        CraftingRecipe[] allRecipes = Resources.FindObjectsOfTypeAll<CraftingRecipe>();
+        CraftingRecipe[] allRecipes = Resources.FindObjectsOfTypeAll<CraftingRecipe>();       
         foreach (CraftingRecipe r in allRecipes)
         {
             recipes.Add(r);
         }
+
+        instance = this;
     }
     #endregion
 

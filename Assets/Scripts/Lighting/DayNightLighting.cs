@@ -21,7 +21,7 @@ public class DayNightLighting : MonoBehaviour {
 
     public Transform lightSource;
 
-    public float timeOfDay = 0;
+    public float timeOfDay;
     public float timeMultiplier = 1;
 	
 	// Update is called once per frame
