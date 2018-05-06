@@ -80,15 +80,22 @@ public class PlayerStatus : MonoBehaviour {
         // inc/dec temperature based on equipment / location
 	}
 
-    public void Run()
+    public float Run()
     {
         if (!isExhausted)
+        {
             isRunning = true;
+            return 2.0f;
+        }            
         else
         {
             if (!isEnergyExhausted)
+            {
                 isRunning = true;
+                return 2.0f;
+            }
         }
+        return 1.0f;
     }
 
     public float GetSpeed()
