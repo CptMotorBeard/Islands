@@ -23,6 +23,10 @@ public class CraftButton : MonoBehaviour
 
     public void Craft()
     {
+        if (recipe == null || craftButton == null)
+        {
+            return;
+        }
         // As of right now, even though the items are removed from the inventory,
         // You cannot craft with a full inventory.
         // I may change this so:
@@ -40,6 +44,9 @@ public class CraftButton : MonoBehaviour
             if (quantity > max)
                 quantity = max;
             qtext.text = quantity.ToString();
+
+            if (quantity == max)
+                Clear();
         }
     }
 
