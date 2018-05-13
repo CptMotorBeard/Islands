@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9bd5149158b46894e92e8ec612bdc8f3
-timeCreated: 1525632372
+guid: 61723fe1503b7f343b969ec964d70995
+timeCreated: 1525810731
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -91,10 +91,10 @@ TextureImporter:
       name: Male - LeftRight3_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 2
-        width: 29
-        height: 138
+        x: 0
+        y: 0
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,10 +105,10 @@ TextureImporter:
       name: Male - LeftRight3_1
       rect:
         serializedVersion: 2
-        x: 81
+        x: 64
         y: 0
-        width: 35
-        height: 135
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,10 +119,10 @@ TextureImporter:
       name: Male - LeftRight3_2
       rect:
         serializedVersion: 2
-        x: 140
+        x: 128
         y: 0
-        width: 50
-        height: 132
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,10 +133,10 @@ TextureImporter:
       name: Male - LeftRight3_3
       rect:
         serializedVersion: 2
-        x: 211
-        y: 2
-        width: 37
-        height: 133
+        x: 192
+        y: 0
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: Male - LeftRight3_4
       rect:
         serializedVersion: 2
-        x: 285
-        y: 2
-        width: 29
-        height: 138
+        x: 256
+        y: 0
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: Male - LeftRight3_5
       rect:
         serializedVersion: 2
-        x: 351
+        x: 320
         y: 0
-        width: 29
-        height: 135
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +175,10 @@ TextureImporter:
       name: Male - LeftRight3_6
       rect:
         serializedVersion: 2
-        x: 405
-        y: 2
-        width: 54
-        height: 130
+        x: 384
+        y: 0
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: Male - LeftRight3_7
       rect:
         serializedVersion: 2
-        x: 473
-        y: 2
-        width: 39
-        height: 133
+        x: 448
+        y: 0
+        width: 64
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
