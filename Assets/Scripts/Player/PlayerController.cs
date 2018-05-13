@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    private Animator animator;
+    public SpriteRenderer toolSprite;
+
+    Animator animator;
 
     PlayerStatus playerStatus;
     Rigidbody2D rb2d;
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
             animator.SetFloat("Movement", multiplier);
             sprite.flipX = (Input.GetAxis("Horizontal") < 0);
+            toolSprite.flipX = (Input.GetAxis("Horizontal") < 0);
         }
 
         rb2d.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * currentSpeed, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * currentSpeed, 0.8f));

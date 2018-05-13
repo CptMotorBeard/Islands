@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Harvestable : Interactable {
-
     public float respawnTime;
 
     public ToolType toolType;
@@ -11,6 +8,7 @@ public class Harvestable : Interactable {
 
     bool active = true;
     float currentWait;
+    bool toolRequired;
 
     public Item item;
     public int maxQuantity;
@@ -24,6 +22,7 @@ public class Harvestable : Interactable {
     {
         originalPosition = transform.position;
         quantity = maxQuantity;
+        toolRequired = toolType != ToolType.NONE;
     }
 
     void Update()
@@ -33,6 +32,7 @@ public class Harvestable : Interactable {
     
     public override void BaseUpdate()
     {
+
         // TODO: Maybe make all interactables respawn
         if (!active)
         {
@@ -109,5 +109,15 @@ public class Harvestable : Interactable {
         }
 
         shakeCount = 0;
+    }
+
+    public override bool ToolRequired()
+    {
+        return toolRequired;
+    }
+
+    public override bool isActive()
+    {
+        return active;
     }
 }

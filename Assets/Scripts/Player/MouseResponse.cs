@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public Animator animator;
+    public Animator toolAnimator;
+
     Interactable focus;
     bool buttonPressed = false;
     float clickDelay = 0f;
@@ -21,6 +24,15 @@ public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 {
                     // If object is interactable set it as our focus
                     focus = interactable;
+                    
+                    if (interactable.ToolRequired())
+                    {
+                        animator.SetBool("PlayerSwinging", true);
+                        InventoryItem selectedTool = ToolbarManager.instance.GetSelectedItem();
+                        
+                        if (selectedTool != null)
+                            toolAnimator.SetInteger("ToolId", selectedTool.item.id);
+                    }
                     buttonPressed = true;
                 }
             }
@@ -33,11 +45,20 @@ public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        animator.SetBool("PlayerSwinging", false);
+        toolAnimator.SetInteger("ToolId", 0);
         buttonPressed = false;
     }
 
     void Update()
-    {        
+    {
+        if (focus == null || !focus.isActive())
+        {
+            buttonPressed = false;
+            animator.SetBool("PlayerSwinging", false);
+            toolAnimator.SetInteger("ToolId", 0);
+        }            
+
         if (!buttonPressed)
             return;
 

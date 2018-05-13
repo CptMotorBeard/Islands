@@ -61,4 +61,14 @@ public class Interactable : MonoBehaviour {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
+
+    public virtual bool ToolRequired()
+    {
+        return false;
+    }
+
+    public virtual bool isActive()
+    {
+        return true;
+    }
 }
