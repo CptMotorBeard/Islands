@@ -62,6 +62,7 @@ public class DebugInput : MonoBehaviour {
                 try
                 {
                     float scale = float.Parse(args[1]);
+                    scale = Mathf.Clamp(scale, 0, 200);
                     DayNightLighting.instance.timeMultiplier = scale;
                 }
                 catch

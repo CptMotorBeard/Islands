@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     public SpriteRenderer toolSprite;
-
+    [HideInInspector] public bool facingLeft = false;
+    
     Animator animator;
 
     PlayerStatus playerStatus;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
+            facingLeft = (Input.GetAxis("Horizontal") < 0);
             float multiplier = 1.0f;            
 
             if (Input.GetButton("Sprint"))
@@ -56,8 +58,9 @@ public class PlayerController : MonoBehaviour
             }
 
             animator.SetFloat("Movement", multiplier);
-            sprite.flipX = (Input.GetAxis("Horizontal") < 0);
-            toolSprite.flipX = (Input.GetAxis("Horizontal") < 0);
+
+            sprite.flipX = facingLeft;
+            toolSprite.flipX = facingLeft;
         }
 
         rb2d.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * currentSpeed, 0.8f), Mathf.Lerp(0, Input.GetAxis("Vertical") * currentSpeed, 0.8f));
