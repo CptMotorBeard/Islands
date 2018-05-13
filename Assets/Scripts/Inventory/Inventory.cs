@@ -118,7 +118,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item, int quantity)
     {
-        int i = space;
+        int i = totalSpace;
         while (quantity > 0 && i >= 0)
         {
             i--;

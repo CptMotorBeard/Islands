@@ -32,7 +32,7 @@ public class CraftButton : MonoBehaviour
         // I may change this so:
         // TODO: Remove items from inventory before trying to craft
         if (Inventory.instance.Add(recipe.craftedItem, quantity * recipe.quantity))
-        {            
+        {
             foreach (CraftingItem c in recipe.recipe)
             {
                 Inventory.instance.RemoveItem(c.item, quantity * c.quantity);
