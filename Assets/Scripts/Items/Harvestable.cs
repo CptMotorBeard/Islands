@@ -72,6 +72,7 @@ public class Harvestable : Interactable {
 
         if (toolType == ToolType.NONE || (selectedTool != null && (selectedTool.toolType == toolType && selectedTool.grade >= requiredGrade)))
         {
+            toolRequired = toolType != ToolType.NONE;
             base.Interact();
 
             Harvest();
@@ -79,6 +80,7 @@ public class Harvestable : Interactable {
         else
         {
             MessageManagement.instance.SetErrorMessage("You don't have the right tool for the job");
+            toolRequired = false;
         }
     }
 
@@ -109,6 +111,7 @@ public class Harvestable : Interactable {
         }
 
         shakeCount = 0;
+        PathfindingGrid.instance.UpdateGrid(this.transform.position, 5);
     }
 
     public override bool ToolRequired()

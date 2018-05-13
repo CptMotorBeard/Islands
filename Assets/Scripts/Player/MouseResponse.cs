@@ -7,6 +7,7 @@ public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public Animator toolAnimator;
 
     Interactable focus;
+    InventoryItem selectedTool;
     bool buttonPressed = false;
     float clickDelay = 0f;
 
@@ -24,15 +25,8 @@ public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 {
                     // If object is interactable set it as our focus
                     focus = interactable;
-                    
-                    if (interactable.ToolRequired())
-                    {
-                        animator.SetBool("PlayerSwinging", true);
-                        InventoryItem selectedTool = ToolbarManager.instance.GetSelectedItem();
-                        
-                        if (selectedTool != null)
-                            toolAnimator.SetInteger("ToolId", selectedTool.item.id);
-                    }
+                    selectedTool = ToolbarManager.instance.GetSelectedItem();
+
                     buttonPressed = true;
                 }
             }
@@ -65,9 +59,17 @@ public class MouseResponse : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         clickDelay += Time.deltaTime;
 
         if (clickDelay < 0.3f)
-            return;
+            return;        
 
         clickDelay = 0f;
         PlayerController.instance.SetFocus(focus);
+
+        if (focus.ToolRequired())
+        {
+            animator.SetBool("PlayerSwinging", true);
+
+            if (selectedTool != null)
+                toolAnimator.SetInteger("ToolId", selectedTool.item.id);
+        }
     }
 }
