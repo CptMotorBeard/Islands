@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   name: Axe
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6bb28e7fd5d82be4bbe64df05a03918b, type: 3}
   maxQuantity: 1
   id: 300
   craftingItem: 0

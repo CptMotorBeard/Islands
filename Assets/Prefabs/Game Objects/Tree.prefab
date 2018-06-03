@@ -127,7 +127,7 @@ MonoBehaviour:
   radius: 2
   interactionTransform: {fileID: 4889918732915954}
   respawnTime: 10
-  toolType: 0
+  toolType: 3
   requiredGrade: 0
   item: {fileID: 11400000, guid: 3e4392300547fa24d8cfe19c12f0cd18, type: 2}
   maxQuantity: 5
