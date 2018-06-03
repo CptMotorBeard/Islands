@@ -93,9 +93,11 @@ public class PathfindingGrid : MonoBehaviour
             return currentNode;
 
         OPEN.Add(currentNode);
+        int count = 0;
 
-        while (OPEN.Count > 0)
+        while (OPEN.Count > 0 && count < 1000)
         {
+            count++;
             currentNode = OPEN[0];
 
             OPEN.Remove(currentNode);
