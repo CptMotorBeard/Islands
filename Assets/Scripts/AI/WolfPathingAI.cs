@@ -39,7 +39,7 @@ public class WolfPathingAI : MonoBehaviour {
         if (delayCount > pathfindingDelay)
         {
             Vector3 position = new Vector3(this.transform.position.x + pathingOffset.x, this.transform.position.y + pathingOffset.y, this.transform.position.z);
-            if (pathfinding.JPS(position, player.position))
+            if (pathfinding.AStarPath(position, player.position))
             {
                 targetPath = pathfinding.GetPath(position, player.position);
             }

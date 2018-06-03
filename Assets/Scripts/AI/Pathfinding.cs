@@ -70,7 +70,7 @@ public class Pathfinding : MonoBehaviour
                 return true;                    // A path has been found
             }
 
-            List<Node> neighbouringNodes = grid.GetDirectedNeighbouringNodes(currentNode);
+            List<Node> neighbouringNodes = grid.GetNeighbouringNodes(currentNode);
 
             foreach (Node n in neighbouringNodes)
             {
